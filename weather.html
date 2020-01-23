@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+    <body>
+        <div style="padding:3rem">
+        <select id="opt">
+  <option value="Chandigarh">Chandigarh</option>
+  <option value="Hyderabad">Hyderabad</option>
+  <option value="Delhi">Delhi</option>
+  <option value="Bangalore">Bangalore</option>
+ <option value="Mumbai">Mumbai</option>
+</select>
+            <div style="padding-top:6rem">
+            city: <span id="cit">Chandigarh</span>
+            </div>
+             <div>
+            temperature: <span id="temp">34C</span>
+            </div>
+             <div>
+            precipitation: <span id="pre">2%</span>
+            </div>
+             <div>
+            humidity: <span id="hum">70%</span>
+            </div>
+             <div>
+            wind: <span id="win">6kmph</span>
+            </div>
+        </div>
+            <script>
+   /* $(document).ready(function(){
+    $.get("samp.json", function(result){
+        var data = result;
+       $("#opt").change(function(){
+           if($(this).val()=="Chandigarh")
+               {
+                   $("#cit").text(data[0].city);
+                   $("#temp").text(data[0].temperature);
+                   $("#pre").text(data[0].precipitation);
+                   $("#hum").text(data[0].humidity);
+                   $("#win").text(data[0].wind);
+               }
+               else if($(this).val()=="Hyderabad")
+               {
+                   $("#cit").text(data[1].city);
+                   $("#temp").text(data[1].temperature);
+                   $("#pre").text(data[1].precipitation);
+                   $("#hum").text(data[1].humidity);
+                   $("#win").text(data[1].wind);
+               }
+                else if($(this).val()=="Delhi")
+               {
+                   $("#cit").text(data[2].city);
+                   $("#temp").text(data[2].temperature);
+                   $("#pre").text(data[2].precipitation);
+                   $("#hum").text(data[2].humidity);
+                   $("#win").text(data[2].wind);
+               }
+               else if($(this).val()=="Bangalore")
+               {
+                   $("#cit").text(data[3].city);
+                   $("#temp").text(data[3].temperature);
+                   $("#pre").text(data[3].precipitation);
+                   $("#hum").text(data[3].humidity);
+                   $("#win").text(data[3].wind);
+               }
+               else if($(this).val()=="Mumbai")
+               {
+                   $("#cit").text(data[4].city);
+                   $("#temp").text(data[4].temperature);
+                   $("#pre").text(data[4].precipitation);
+                   $("#hum").text(data[4].humidity);
+                   $("#win").text(data[4].wind);
+               }
+
+       
+});
+        
+    });
+    
+    });*/
+                
+     $(function(){
+         $("#opt").on("change",function(){
+             var sel = $("#opt").val();
+             $.get("samp.json",function(data){
+                 $.each(data,function(key,entry)
+                       {
+                     if(sel==entry.city)
+                         {
+                             $("#cit").text(entry.city);
+                             $("#temp").text(entry.temperature);
+                             $("#pre").text(entry.precipitation);
+                             $("#hum").text(entry.humidity);
+                             $("#win").text(entry.wind);
+                         }
+                 });
+             });
+         });
+     });           
+                
+    </script>
+        
+    </body>
+</html>
